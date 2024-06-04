@@ -24,7 +24,6 @@
                             <th scope="col">Date </th>
                             <th scope="col">Montant</th>
                             <th scope="col">Client</th>
-                            <th scope="col">Numero de compte</th>
                             <th scope="col">type</th>
                             <th scope="col">Actions</th>
                         </tr>
@@ -35,7 +34,6 @@
                                 <td><?= $data->datetr ?></td>
                                 <td><?= $data->montant ?> </td>
                                 <td><?= $data->prenom . " " . $data->nom ?></td>
-                                <td><?= $data->numero ?></td>
                                 <td><?= $data->type ?></td>
                                 <td>Actions</td>
                             </tr>
@@ -50,7 +48,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-    <script src="http://127.0.0.1:8010/js/transaction.js"></script>
+    <script src="http://127.0.0.1:8010/js/recu.js"></script>
 </body>
 
 </html>

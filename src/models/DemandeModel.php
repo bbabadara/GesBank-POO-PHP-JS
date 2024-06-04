@@ -4,7 +4,7 @@ require_once"../src/core/Model.php";
     public function findAllWithClient()
     {
        
-        $sql = "select * from demande d, users u,typecpt t where d.idu=u.idu and d.idtc=t.idtc ";
+        $sql = "select * from demande d, users u,typecompte t where d.idu=u.idu and d.idtc=t.idtc ";
        return $this->executeSelect($sql);
     }
    

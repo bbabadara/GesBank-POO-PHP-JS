@@ -13,10 +13,6 @@ document.addEventListener("DOMContentLoaded",async(event)=>{
 })
 
 
-
-
-
-
 async function findAllDemandeWithClient(){
     let response= await fetch (`${WEBURL}/?ressource=api&controller=demande`);
     const datas=await response.json();

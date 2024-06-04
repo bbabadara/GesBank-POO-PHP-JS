@@ -16,28 +16,40 @@
 
     <main>
         <div class="container-fluid col-12 d-flex vh-100 ">
-        <?php require_once "../views/partials/menu.html.php"; ?>
-                    <div class="container col-10">
-                <table class="table">
+        <?php require_once"../views/partials/menu.html.php"?>
+            <div class="container w-100">
+                <div class="container col-12 mt-3 border shadow d-flex align-items-center justify-content-around p-3 rounded">
+                    <div class="col-md-3 d-flex align-items-center">
+                        <label for="inputCity" class="form-label  mx-2">Tel</label>
+                        <input type="text" class="form-control" id="inputTel">
+                    </div>
+                    <div class="col-md-4 d-flex d-flex align-items-center">
+                        <label for="inputState" class="form-label  mx-2">Type</label>
+                        <select id="inputState" class="form-select">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 d-flex align-items-center">
+                        <label for="inputState" class="form-label mx-2">Statut</label>
+                        <select id="inputState" class="form-select">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                
+                </div>
+                <table class="table mt-5">
                     <thead class="table-info">
                         <tr>
-                            <th scope="col">Date </th>
-                            <th scope="col">Montant</th>
-                            <th scope="col">Client</th>
-                            <th scope="col">Numero de compte</th>
-                            <th scope="col">type</th>
-                            <th scope="col">Actions</th>
+                            <th scope="col">libelle</th>
+
                         </tr>
                     </thead>
                     <tbody id="tBody">
                         <?php foreach ($datas as $data) : ?>
                             <tr>
-                                <td><?= $data->datetr ?></td>
-                                <td><?= $data->montant ?> </td>
-                                <td><?= $data->prenom . " " . $data->nom ?></td>
-                                <td><?= $data->numero ?></td>
-                                <td><?= $data->type ?></td>
-                                <td>Actions</td>
+                                <td><?= $data->libtc ?></td>
                             </tr>
                         <?php endforeach;    ?>
 
@@ -50,7 +62,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-    <script src="http://127.0.0.1:8010/js/transaction.js"></script>
+    <script src="http://127.0.0.1:8010/js/typeCompte.js"></script>
 </body>
 
 </html>
