@@ -1,19 +1,19 @@
 const WEBURL="http://127.0.0.1:8010";
-let comptes=[];
+let recus=[];
 
 
 document.addEventListener("DOMContentLoaded",async(event)=>{
-  let datas =await findAllWithClient();
-  comptes=[...datas];
+  let datas =await findAllRecu();
+  recus=[...datas];
   document.querySelector("#inputTest").addEventListener("input",function(){
-    console.log(comptes);
+    console.log(recus);
     
 })
 })
 
 
-async function findAllWithClient(){
-    let response= await fetch (`${WEBURL}/?ressource=api&controller=compte`);
+async function findAllRecu(){
+    let response= await fetch (`${WEBURL}/?ressource=api&controller=recu`);
     const datas=await response.json();
     return datas;
 }

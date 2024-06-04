@@ -13,6 +13,7 @@
 
 <body>
     <h1>HELLO</h1>
+    <input type="text" id="inputTest">
 
     <main>
         <div class="container-fluid col-12 d-flex vh-100 ">
