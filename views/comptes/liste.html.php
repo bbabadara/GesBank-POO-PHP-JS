@@ -18,7 +18,11 @@
         <div class="container-fluid col-12 d-flex vh-100 ">
         <?php require_once "../views/partials/menu.html.php"; ?>
                     <div class="container col-10">
-                <table class="table">
+                    <div class="col-md-5 mb-3 d-flex align-items-center">
+                        <label for="inputCity" class="form-label  mx-2">Client</label>
+                        <input type="text" class="form-control" id="inputClient">
+                    </div>
+                <table class="table table-hover">
                     <thead class="table-info">
                         <tr>
                             <th scope="col">Client</th>

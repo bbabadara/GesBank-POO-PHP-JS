@@ -42,7 +42,7 @@
         </li>
         <li class="list-group-item">
             <a href="<?= WEBROOT ?>/?ressource=html&controller=typeCompte" class="list-group-item list-group-item-action <?= $_GET["controller"] == "typeCompte" ? "active" : "" ?> d-flex align-item-center">
-                <span class="material-symbols-outlined px-2"> date_range </span>Type de Comptes
+                <span class="material-symbols-outlined px-2"> date_range </span>Type Compte
             </a>
         </li>
 

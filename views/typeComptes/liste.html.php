@@ -19,6 +19,9 @@
         <div class="container-fluid col-12 d-flex vh-100 ">
         <?php require_once"../views/partials/menu.html.php"?>
             <div class="container w-100">
+            <div class="container col-12 mt-3 border shadow d-flex align-items-center justify-content-around p-3 rounded">
+                  
+                </div>
                 <div class="container col-12 mt-3 border shadow d-flex align-items-center justify-content-around p-3 rounded">
                     <div class="col-md-3 d-flex align-items-center">
                         <label for="inputCity" class="form-label  mx-2">Tel</label>

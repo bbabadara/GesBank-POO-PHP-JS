@@ -12,8 +12,6 @@
 </head>
 
 <body>
-    <h1>HELLO</h1>
-    <input type="text" id="inputTest">
 
     <main>
         <div class="container-fluid col-12 d-flex vh-100 ">
@@ -25,10 +23,12 @@
                         <input type="text" class="form-control" id="inputTel">
                     </div>
                     <div class="col-md-4 d-flex d-flex align-items-center">
-                        <label for="inputState" class="form-label  mx-2">Type</label>
-                        <select id="inputState" class="form-select">
-                            <option selected>Choose...</option>
-                            <option>...</option>
+                        <label for="inputTc" class="form-label  mx-2">Type</label>
+                        <select id="inputTc" class="form-select">
+                            <option value="all">Tout</option>
+                            <option value="Compte Courant">Compte Courant</option>
+                            <option value="Compte Épargne">Compte Épargne	</option>
+                            <option value="Compte Entreprise">Compte Entreprise</option>
                         </select>
                     </div>
                     <div class="col-md-4 d-flex align-items-center">
@@ -40,9 +40,10 @@
                     </div>
                               
                 </div>
-                <table class="table mt-5">
+                <table class="table mt-5 table-hover">
                     <thead class="table-info">
                         <tr>
+                            <th scope="col"><input type="checkbox" id="selAll" onclick="selectAll(this)"></th>
                             <th scope="col">Date</th>
                             <th scope="col">Client</th>
                             <th scope="col">Telephone</th>
@@ -65,6 +66,24 @@
 
                     </tbody>
                 </table>
+                <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item"><button class="page-link" >1</button></li>
+    <li class="page-item"><button class="page-link" >2</button></li>
+    <li class="page-item"><button class="page-link" >3</button></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
             </div>
         </div>
     </main>
