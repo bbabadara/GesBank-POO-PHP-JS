@@ -15,7 +15,7 @@
 
     <main>
         <div class="container-fluid col-12 d-flex vh-100 ">
-        <?php require_once "../views/partials/menu.html.php"?>
+            <?php require_once "../views/partials/menu.html.php" ?>
             <div class="container w-100">
                 <div class="container col-12 mt-3 border shadow d-flex align-items-center justify-content-around p-3 rounded">
                     <div class="col-md-3 d-flex align-items-center">
@@ -27,7 +27,7 @@
                         <select id="inputTc" class="form-select">
                             <option value="all">Tout</option>
                             <option value="Compte Courant">Compte Courant</option>
-                            <option value="Compte Épargne">Compte Épargne	</option>
+                            <option value="Compte Épargne">Compte Épargne </option>
                             <option value="Compte Entreprise">Compte Entreprise</option>
                         </select>
                     </div>
@@ -38,7 +38,6 @@
                             <option>...</option>
                         </select>
                     </div>
-                              
                 </div>
                 <table class="table mt-5 table-hover">
                     <thead class="table-info">
@@ -67,22 +66,14 @@
                     </tbody>
                 </table>
                 <nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li class="page-item"><button class="page-link" >1</button></li>
-    <li class="page-item"><button class="page-link" >2</button></li>
-    <li class="page-item"><button class="page-link" >3</button></li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+                    <ul class="pagination" id="pagination">
+                        <!-- <li class="page-item"><button class="page-link" href="#">Previous</button></li>
+                        <li class="page-item"><button class="page-link">1</button></li>
+                        <li class="page-item"><button class="page-link">2</button></li>
+                        <li class="page-item"><button class="page-link">3</button></li>
+                        <li class="page-item"><button class="page-link" href="#">Next</button></li> -->
+                    </ul>
+                </nav>
 
             </div>
         </div>
