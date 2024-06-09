@@ -17,7 +17,8 @@ class DemandeController extends Controller
     private function listerDemande()
     {
         parent::rendorView("demandes/liste",["datas" =>$this->demandeModel->findAllWithClient() ]);
-        // $datas = ;
+        //  $datas = $this->demandeModel->findAllWithClient();
+        //  parent::dd($datas);
         // require "../views/demandes/liste.html.php";
     }
 }
