@@ -1,6 +1,8 @@
 <?php
 require_once"../src/models/recuModel.php";
-class RecuController{
+require_once"../src/core/Controller.php";
+
+class RecuController extends Controller{
 private recuModel $recuModel;
 
 public function __construct()
@@ -12,7 +14,9 @@ public function load(){
     $this->listerrecu();
 }
     private function listerrecu(){
-      $datas=$this->recuModel->findAllWithTrasactionUsers();
-      require_once"../views/recus/liste.html.php";
+        parent::rendorView("recus/liste",["datas" =>$this->recuModel->findAllWithTrasactionUsers()]);
+
+    //   $datas=$this->recuModel->findAllWithTrasactionUsers();
+    //   require_once"../views/recus/liste.html.php";
     }
 }

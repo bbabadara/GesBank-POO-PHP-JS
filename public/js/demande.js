@@ -72,7 +72,7 @@ function generateTr(demande) {
         <td>${demande.dated}</td>
         <td onmouseover="afficheBtnTd(this)" onmouseout="masqueBtnTd(this)" >${demande.prenom+" "+demande.nom}
             <div>
-               <a href="${WEBURL}/?ressource=html&controller=compte&action=dClient&key=${demande.idu}" class="btn btn-primary" hidden >Compte</a>
+               <a href="${WEBURL}/?ressource=html&controller=compte&action=cClient&key=${demande.idu}" class="btn btn-primary" hidden >Compte</a>
                <a href="${WEBURL}/ressource=html&controller=transaction&action=tClient&key=${demande.idu}"  class="btn btn-primary" hidden >transaction</a>
             </div>
         </td>
@@ -163,7 +163,7 @@ function nombreDePage(tab) {
 
 function getSlicedTable(tab,pos=0,nbr=5){
         return tab.slice(pos, nbr)
-}
+} 
 
 function pageNum(page){
  const pos=(page-1)*5;

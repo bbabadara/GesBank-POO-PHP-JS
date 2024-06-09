@@ -12,6 +12,6 @@ define("WEBROOT","http://127.0.0.1:8010");
                 require_once "../src/controllers/$ressource/$controllerClass.php";
                 $demande = new $controllerClass();
             }
-            }                
+            }
             ?>
     

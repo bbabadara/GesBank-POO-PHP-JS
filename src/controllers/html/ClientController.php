@@ -1,18 +1,24 @@
 <?php
-require_once"../src/models/UsersModel.php";
-class ClientController{
-private UsersModel $usersModel;
+require_once "../src/models/UsersModel.php";
+require_once "../src/core/Controller.php";
 
-public function __construct()
+class ClientController extends Controller
 {
-    $this->usersModel = new UsersModel;
-    $this->load();
-}
-public function load(){
-    $this->listClient();
-}
-    private function listClient(){
-      $datas=$this->usersModel->  findAllUsersByProfil("Client");
-       require_once"../views/clients/liste.html.php"; 
+    private UsersModel $usersModel;
+
+    public function __construct()
+    {
+        $this->usersModel = new UsersModel;
+        $this->load();
+    }
+    public function load()
+    {
+        $this->listClient();
+    }
+    private function listClient()
+    {
+        parent::rendorView("clients/liste",["datas" => $this->usersModel->findAllUsersByProfil("Client")]);
+        // $datas = $this->usersModel->findAllUsersByProfil("Client");
+        // require_once "../views/clients/liste.html.php";
     }
 }

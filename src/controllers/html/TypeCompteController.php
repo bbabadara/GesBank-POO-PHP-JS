@@ -1,6 +1,8 @@
 <?php
 require_once"../src/models/TypeCompteModel.php";
-class TypeCompteController{
+require_once"../src/core/Controller.php";
+
+class TypeCompteController extends Controller{
 private TypeCompteModel $typeCompteModel;
 
 public function __construct()
@@ -12,7 +14,9 @@ public function load(){
     $this->listerTypeCompte();
 }
     private function listerTypeCompte(){
-      $datas=$this->typeCompteModel->findAll();
-      require_once"../views/typeComptes/liste.html.php";
+        parent::rendorView("typeComptes/liste",["datas" =>$this->typeCompteModel->findAll() ]);
+
+    //   $datas=$this->typeCompteModel->findAll();
+    //   require_once"../views/typeComptes/liste.html.php";
     }
 }
