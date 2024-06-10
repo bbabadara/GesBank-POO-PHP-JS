@@ -10,6 +10,9 @@ class Routeur
                 require_once "../src/controllers/$ressource/$controllerClass.php";
                 $demande = new $controllerClass();
             }
+        }else{
+            require_once "../src/controllers/html/SecurityController.php";
+            $security=new SecurityController();
         }
     }
 }
