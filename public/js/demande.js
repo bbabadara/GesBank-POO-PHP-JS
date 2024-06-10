@@ -4,6 +4,9 @@ const WEBURL = "http://127.0.0.1:8010";
 const inputTel = getElement("#inputTel")
 const inputTc = getElement("#inputTc")
 const tBody = getElement("#tBody")
+const pagination= getElement("#pagination")
+const elementPerPage=3;
+var tekXel=1
 let demandes = [];
 
 
@@ -54,8 +57,8 @@ function findDemandeByType(type) {
 
 
  function init(){
-  tBody.innerHTML=generateTbody(demandes)
-  getElement("#pagination").innerHTML=generatepagination(nombreDePage(demandes))
+  // tBody.innerHTML=generateTbody(demandes)
+generatePagination(demandes)
  }
 function generateTbody(demands) {
   let html = ""
@@ -136,9 +139,9 @@ function selectAll(checkbox) {
   }
 }
  
-function pageNum(page){
- alert(page)
-}
+// function pageNum(page){
+//  alert(page)
+// }
 
 function getElement(name, bool = false) {
   if (!bool) {
@@ -148,28 +151,61 @@ function getElement(name, bool = false) {
   }
 }
 
-function generatepagination(long) {
-let html=`<li class="page-item" onclick="previousPage()"><button class="page-link" href="#">Previous</button></li>`;
-for (let i = 1; i <=long; i++) {
-  html+=`<li class="page-item" onclick="pageNum(${i})"><button class="page-link" >${i}</button></li>` 
-}
-html+=`<li class="page-item" onclick="nextPage()"><button class="page-link" href="#">Next</button></li>`;
-return html
-} 
+// function generatepagination(long) {
+// let html=`<li class="page-item" onclick="previousPage()"><button class="page-link" href="#">Previous</button></li>`;
+// for (let i = 1; i <=long; i++) {
+//   html+=`<li class="page-item" onclick="pageNum(${i})"><button class="page-link" >${i}</button></li>` 
+// }
+// html+=`<li class="page-item" onclick="nextPage()"><button class="page-link" href="#">Next</button></li>`;
+// return html
+// } 
 
-function nombreDePage(tab) {
-  return Math.ceil(tab.length/5)
-}
+// function nombreDePage(tab) {
+//   return Math.ceil(tab.length/5)
+// }
 
-function getSlicedTable(tab,pos=0,nbr=5){
-        return tab.slice(pos, nbr)
-} 
+// function getSlicedTable(tab,pos=0,nbr=5){
+//         return tab.slice(pos, nbr)
+// } 
 
-function pageNum(page){
- const pos=(page-1)*5;
-  tBody.innerHTML=generateTbody(getSlicedTable(demandes,pos))
+// function pageNum(page){
+//  const pos=(page-1)*5;
+//   tBody.innerHTML=generateTbody(getSlicedTable(demandes,pos))
+//  }
+
+ function getDatasPaginate(tab,start,elementPage){
+  let firstPosition=(start-1)*elementPage;
+  let lastPosition=firstPosition+elementPage;
+  return {
+    datas:tab.slice(firstPosition,lastPosition),
+    page:Math.ceil(demandes.length/elementPage)
+  };
  }
- 
+  
+ function generatePagination(allDatas){
+const {datas,page}=getDatasPaginate(allDatas,1,elementPerPage);
+ let html=`<li class="page-item" ><button class="page-link" href="#">Previous</button></li>`;
+for (let i = 1; i <=page; i++) {
+  html+=`<li class="page-item ${i==1?'active':''}" data-number="${i}"><button class="page-link" >${i}</button></li>` 
+}
+
+html+=`<li class="page-item" ><button class="page-link" href="#">Next</button></li>`;
+
+pagination.innerHTML= html
+ tBody.innerHTML=generateTbody(datas)
+const itemsLi=pagination.querySelectorAll(".page-item")
+itemsLi.forEach((item)=>{
+  item.addEventListener("click",(e)=>{
+    pagination.querySelector(".active").classList.remove("active")
+    item.classList.add("active")
+    let {datas}=getDatasPaginate(allDatas,parseInt(item.dataset.number),elementPerPage)
+  tBody.innerHTML=generateTbody(datas)
+})
+})
+
+ }
+
+
 //  function nextPage(){
   
 //  }
