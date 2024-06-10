@@ -14,7 +14,7 @@ public function load(){
     $this->listerProfil();
 }
     private function listerProfil(){
-        parent::rendorView("profils/liste",["datas" => $this->profilModel->  findAll()]);
+        parent::renderView("profils/liste",["datas" => $this->profilModel->  findAll()]);
 
     //   $datas=$this->profilModel->  findAll();
     //    require_once"../views/profils/liste.html.php"; 

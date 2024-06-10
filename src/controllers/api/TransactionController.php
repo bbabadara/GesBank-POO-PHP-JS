@@ -1,6 +1,7 @@
 <?php
 require_once "../src/models/TransactionModel.php";
-class TransactionController
+require_once"../src/core/controller.php";
+class TransactionController extends Controller
 {
     private TransactionModel $transactionModel;
 
@@ -15,7 +16,6 @@ class TransactionController
     }
     private function listerTransaction()
     {
-        $datas = $this->transactionModel->findAllWithClient();
-        echo json_encode($datas);
+        parent::renderJson($this->transactionModel->findAllWithClient());
     }
 }

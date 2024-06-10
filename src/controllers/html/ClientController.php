@@ -17,7 +17,7 @@ class ClientController extends Controller
     }
     private function listClient()
     {
-        parent::rendorView("clients/liste",["datas" => $this->usersModel->findAllUsersByProfil("Client")]);
+        parent::renderView("clients/liste",["datas" => $this->usersModel->findAllUsersByProfil("Client")]);
         // $datas = $this->usersModel->findAllUsersByProfil("Client");
         // require_once "../views/clients/liste.html.php";
     }

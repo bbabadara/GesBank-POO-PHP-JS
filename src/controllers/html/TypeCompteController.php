@@ -14,7 +14,7 @@ public function load(){
     $this->listerTypeCompte();
 }
     private function listerTypeCompte(){
-        parent::rendorView("typeComptes/liste",["datas" =>$this->typeCompteModel->findAll() ]);
+        parent::renderView("typeComptes/liste",["datas" =>$this->typeCompteModel->findAll() ]);
 
     //   $datas=$this->typeCompteModel->findAll();
     //   require_once"../views/typeComptes/liste.html.php";

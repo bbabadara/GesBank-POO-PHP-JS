@@ -1,6 +1,8 @@
 <?php
 require_once"../src/models/ProfilModel.php";
-class ProfilController{
+require_once"../src/core/controller.php";
+class ProfilController extends Controller
+ {
 private ProfilModel $profilModel;
 
 public function __construct()
@@ -12,7 +14,7 @@ public function load(){
     $this->listerProfil();
 }
     private function listerProfil(){
-      $datas=$this->profilModel->  findAll();
-      echo json_encode($datas);
+        parent::renderJson($this->profilModel->findAll());
+      
     }
 }

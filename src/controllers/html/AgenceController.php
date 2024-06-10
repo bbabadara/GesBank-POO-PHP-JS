@@ -16,7 +16,7 @@ class AgenceController extends Controller
     }
     private function listerAgence()
     {
-        parent::rendorView("agences/liste",["datas" => $this->agenceModel->findAll()]);
+        parent::renderView("agences/liste",["datas" => $this->agenceModel->findAll()]);
         // $datas = $this->agenceModel->findAll();
         // require_once "../views/agences/liste.html.php";
     }

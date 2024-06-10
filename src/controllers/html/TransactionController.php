@@ -14,7 +14,7 @@ public function load(){
     $this->listerTransaction();
 }
     private function listerTransaction(){
-        parent::rendorView("transactions/liste",["datas" =>$this->transactionModel->findAllWithClient()]);
+        parent::renderView("transactions/liste",["datas" =>$this->transactionModel->findAllWithClient()]);
 
     //   $datas=$this->transactionModel->findAllWithClient();
     //   require_once"../views/transactions/liste.html.php";
