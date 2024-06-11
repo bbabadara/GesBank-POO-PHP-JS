@@ -12,6 +12,7 @@
                             <th scope="col">Date Creation</th>
                             <th scope="col">Numero</th>
                             <th scope="col">solde</th>
+                            <th scope="col">Type</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -23,11 +24,17 @@
                                 <td><?= $data->dateCrea ?></td>
                                 <td><?= $data->numero ?></td>
                                 <td><?= $data->solde ?></td>
+                                <td><?= $data->libtc ?></td>
                                 <td>Actions</td>
                             </tr>
                         <?php endforeach;    ?>
 
                     </tbody>
                 </table>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination" id="pagination">
+                      
+                    </ul>
+                </nav>
           
 <script src="<?=WEBROOT?>/js/compte.js"></script>

@@ -178,7 +178,7 @@ function getElement(name, bool = false) {
   let lastPosition=firstPosition+elementPage;
   return {
     datas:tab.slice(firstPosition,lastPosition),
-    page:Math.ceil(demandes.length/elementPage)
+    page:Math.ceil(tab.length/elementPage)
   };
  }
   
