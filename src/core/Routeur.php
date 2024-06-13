@@ -3,6 +3,12 @@ class Routeur
 {
     public static function run()
     {
+        if (!isset($_SESSION["user"]) && $_REQUEST["controller"]!="security") {
+            require_once "../src/controllers/html/SecurityController.php";
+            $security=new SecurityController();
+            exit();
+        }
+        
         if (isset($_REQUEST["ressource"])) {
             $ressource = $_REQUEST["ressource"];
             if (isset($_REQUEST["controller"])) {
@@ -14,5 +20,6 @@ class Routeur
             require_once "../src/controllers/html/SecurityController.php";
             $security=new SecurityController();
         }
+    
     }
 }
