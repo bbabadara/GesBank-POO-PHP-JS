@@ -17,6 +17,10 @@
     <main>
         <div class="container-fluid col-12 d-flex vh-100 ">
             <div class="container col-2  shadow-sm">
+                <div>
+                    <h4><?=$_SESSION["user"]["prenom"]." ".$_SESSION["user"]["nom"]?></h4>
+                    <h6 class="fw-light "><?=$_SESSION["user"]["libp"]?></h6>
+                </div>
                 <p class="fw-light fs-6 mt-3 mb-3">-MENU</p>
                 <ul class="list-group">
                     <li class="list-group-item ">
@@ -61,6 +65,11 @@
                     <li class="list-group-item">
                         <a href="<?= WEBROOT ?>/?ressource=html&controller=typeCompte" class="list-group-item list-group-item-action <?= $_GET["controller"] == "typeCompte" ? "active" : "" ?> d-flex align-item-center">
                             <span class="material-symbols-outlined px-2"> date_range </span>Type Compte
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="<?= WEBROOT ?>/?ressource=html&controller=security&action=off" class=" d-flex align-item-center">
+                            <button class="btn btn-danger">Se deconnecter</button> 
                         </a>
                     </li>
 

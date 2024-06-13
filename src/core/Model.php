@@ -23,7 +23,14 @@ abstract class  Model
         if(!$single){
             return $result->fetchAll(PDO::FETCH_CLASS,$calledClass);
             }
-        return $result->fetch(PDO::FETCH_CLASS,$calledClass);
+        return $result->fetch(PDO::FETCH_CLASS,$calledClass)?:[];
+    }
+    protected function executeSelectPph(string $sql,bool $single=false):array{
+        $result = $this->openConnexion()->query($sql);
+        if(!$single){
+            return $result->fetchAll(PDO::FETCH_ASSOC);
+            }
+        return $result->fetch(PDO::FETCH_ASSOC)?:[];
     }
     
     protected function openConnexion()

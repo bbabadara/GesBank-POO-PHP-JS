@@ -1,64 +1,41 @@
-// const { elements } = require("chart.js");
+import { Paginate } from "../core/paginate.js";
+import { DemandeModel } from "../models/DemandeModel.js";
 
+// const { elements } = require("chart.js");
+DemandeModel
 const WEBURL = "http://127.0.0.1:8010";
 const inputTel = getElement("#inputTel")
 const inputTc = getElement("#inputTc")
 const tBody = getElement("#tBody")
 const pagination= getElement("#pagination")
-const elementPerPage=3;
 var tekXel=1
+const demandeModel=new DemandeModel();
 let demandes = [];
 
 
 document.addEventListener("DOMContentLoaded", async (event) => {
-  let datas = await findAllDemandeWithClient();
+  let datas = await demandeModel.findAllDemandeWithClient();
   demandes = [...datas];
   init()
 })
 
 inputTel.addEventListener("input", function () {
   if (inputTel.value.trim()!="") {
-    tBody.innerHTML=generateTbody(findDemandeBySearchTel(inputTel.value)) 
+    Paginate.generatePagination(demandeModel.findDemandeBySearchTel(inputTel.value,demandes),pagination,tBody,generateTbody)
   }else(
     init()
   )
 })
 
 inputTc.addEventListener("input",function(){
-  tBody.innerHTML=generateTbody(findDemandeByType(inputTc.value))
+  Paginate.generatePagination(demandeModel.findDemandeByType(inputTc.value,demandes),pagination,tBody,generateTbody)
  })
-
-
-async function findAllDemandeWithClient() {
-  let response = await fetch(`${WEBURL}/?ressource=api&controller=demande`);
-  const datas = await response.json();
-  return datas;
-}
-
-
-
-function findDemandeBySearchTel(saisi) {
-  if (saisi != "") {
-    return demandes.filter(function (d) {
-      return d.telephone.toUpperCase().includes(saisi.toUpperCase()) == true
-    })
-  }
-  return []
-}
-function findDemandeByType(type) {
-  if (type != "all") {
-    return demandes.filter(function (d) {
-      return d.libtc.toUpperCase().includes(type.toUpperCase()) == true
-    })
-  }
-  return demandes
-}
 
 
 
  function init(){
   // tBody.innerHTML=generateTbody(demandes)
-generatePagination(demandes)
+Paginate.generatePagination(demandes,pagination,tBody,generateTbody)
  }
 function generateTbody(demands) {
   let html = ""
@@ -139,9 +116,7 @@ function selectAll(checkbox) {
   }
 }
  
-// function pageNum(page){
-//  alert(page)
-// }
+
 
 function getElement(name, bool = false) {
   if (!bool) {
@@ -151,59 +126,8 @@ function getElement(name, bool = false) {
   }
 }
 
-// function generatepagination(long) {
-// let html=`<li class="page-item" onclick="previousPage()"><button class="page-link" href="#">Previous</button></li>`;
-// for (let i = 1; i <=long; i++) {
-//   html+=`<li class="page-item" onclick="pageNum(${i})"><button class="page-link" >${i}</button></li>` 
-// }
-// html+=`<li class="page-item" onclick="nextPage()"><button class="page-link" href="#">Next</button></li>`;
-// return html
-// } 
 
-// function nombreDePage(tab) {
-//   return Math.ceil(tab.length/5)
-// }
-
-// function getSlicedTable(tab,pos=0,nbr=5){
-//         return tab.slice(pos, nbr)
-// } 
-
-// function pageNum(page){
-//  const pos=(page-1)*5;
-//   tBody.innerHTML=generateTbody(getSlicedTable(demandes,pos))
-//  }
-
- function getDatasPaginate(tab,start,elementPage){
-  let firstPosition=(start-1)*elementPage;
-  let lastPosition=firstPosition+elementPage;
-  return {
-    datas:tab.slice(firstPosition,lastPosition),
-    page:Math.ceil(tab.length/elementPage)
-  };
- }
-  
- function generatePagination(allDatas){
-const {datas,page}=getDatasPaginate(allDatas,1,elementPerPage);
- let html=`<li class="page-item" ><button class="page-link" href="#">Previous</button></li>`;
-for (let i = 1; i <=page; i++) {
-  html+=`<li class="page-item ${i==1?'active':''}" data-number="${i}"><button class="page-link" >${i}</button></li>` 
-}
-
-html+=`<li class="page-item" ><button class="page-link" href="#">Next</button></li>`;
-
-pagination.innerHTML= html
- tBody.innerHTML=generateTbody(datas)
-const itemsLi=pagination.querySelectorAll(".page-item")
-itemsLi.forEach((item)=>{
-  item.addEventListener("click",(e)=>{
-    pagination.querySelector(".active").classList.remove("active")
-    item.classList.add("active")
-    let {datas}=getDatasPaginate(allDatas,parseInt(item.dataset.number),elementPerPage)
-  tBody.innerHTML=generateTbody(datas)
-})
-})
-
- }
+ 
 
 
 //  function nextPage(){

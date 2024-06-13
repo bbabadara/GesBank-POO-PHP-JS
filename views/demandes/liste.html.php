@@ -59,4 +59,4 @@
                 </nav>
 
             </div>
-    <script src="http://127.0.0.1:8010/js/demande.js"></script>
+    <script src="<?=WEBROOT?>/js/controllers/demande.js" type="module"></script>

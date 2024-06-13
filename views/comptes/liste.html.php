@@ -37,4 +37,4 @@
                     </ul>
                 </nav>
           
-<script src="<?=WEBROOT?>/js/compte.js"></script>
+<script src="<?=WEBROOT?>/js/controllers/compte.js" type="module"></script>
