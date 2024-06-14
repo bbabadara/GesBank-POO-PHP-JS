@@ -17,15 +17,16 @@ class CompteController extends Controller
     private function listerCompte()
     {
         if (isset($_REQUEST["action"])) {
-            if ($_REQUEST["action"] == "cClient") {
-                parent::renderView("comptes/liste",["datas" => $this->compteModel->findAllCompteByClient($_REQUEST["key"])]);
-                // $datas = $this->compteModel->findAllCompteByClient($_REQUEST["key"]);
-                // require_once "../views/comptes/liste.html.php";
+            if ($_REQUEST["action"] == "cClient" || $_SESSION["user"]["libp"] == "Client") {
+                $key = $_SESSION["user"]["libp"] == "Client" ? $_SESSION["user"]["idu"] : $_REQUEST["key"];
+                parent::renderView("comptes/liste", ["datas" => $this->compteModel->findAllCompteByClient($key)]);
             }
-        }else {
-            parent::renderView("comptes/liste",["datas" => $this->compteModel->findAllWithClient()]);
-            // $datas = $this->compteModel->findAllWithClient();
-            // require_once "../views/comptes/liste.html.php";
+        } else {
+            if ($_SESSION["user"]["libp"] == "Client") {
+                parent::renderView("comptes/liste", ["datas" => $this->compteModel->findAllCompteByClient($_SESSION["user"]["idu"])]);
+            } else {
+                parent::renderView("comptes/liste", ["datas" => $this->compteModel->findAllWithClient()]);
+            }
         }
     }
 }

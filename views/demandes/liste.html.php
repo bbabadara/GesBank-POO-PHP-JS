@@ -1,10 +1,17 @@
 
             <div class="container w-100">
+            <?php if ($_SESSION["user"]["libp"]=="Client"):?>
+                    <h2>Mes demandes</h2>
+                    <?php else: ?>
+                        <h2>Toutes les demandes</h2>
+                    <?php endif?>
                 <div class="container col-12 mt-3 border shadow d-flex align-items-center justify-content-around p-3 rounded">
-                    <div class="col-md-3 d-flex align-items-center">
+                <?php if ($_SESSION["user"]["libp"]=="CC"||$_SESSION["user"]["libp"]=="RG"):?>
+                <div class="col-md-3 d-flex align-items-center">
                         <label for="inputCity" class="form-label  mx-2">Tel</label>
                         <input type="text" class="form-control" id="inputTel">
                     </div>
+                    <?php endif?>
                     <div class="col-md-4 d-flex d-flex align-items-center">
                         <label for="inputTc" class="form-label  mx-2">Type</label>
                         <select id="inputTc" class="form-select">

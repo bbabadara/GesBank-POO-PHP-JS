@@ -23,16 +23,16 @@ class SecurityController extends Controller
             if ($_REQUEST["action"] == "login") {
                 extract($_POST);
                 $_SESSION["user"] = $this->securityModel->findUserLogged($email, $pwd);
-
+                
                 if (!empty($_SESSION["user"])) {
                     
                     if ($_SESSION["user"]["libp"] == "Client") {
                         // $this->dd($_SESSION["user"] );
-                        $this->redirectToRoot("ressource=html&controller=demande");
+                        $this->redirectToRoot("ressource=html&controller=compte");
                     } elseif ($_SESSION["user"]["libp"] == "RG") {
-                        echo "salam ";
+                        $this->redirectToRoot("ressource=html&controller=Transaction");
                     } elseif ($_SESSION["user"]["libp"] == "CC") {
-                        echo "salam todos";
+                        $this->redirectToRoot("ressource=html&controller=demande");
                     }
                 } else {
                     parent::renderView("security/login1");

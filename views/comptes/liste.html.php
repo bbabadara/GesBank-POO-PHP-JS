@@ -1,9 +1,18 @@
 
+<?php if ($_SESSION["user"]["libp"]=="CC"||$_SESSION["user"]["libp"]=="RG"):?>
 
                 <div class="col-md-5 mb-3 mt-5 d-flex align-items-center">
                     <label for="inputCity" class="form-label  mx-2">Client</label>
                     <input type="text" class="form-control" id="inputClient">
                 </div>
+                <?php endif ?>
+
+                <?php if ($_SESSION["user"]["libp"]=="Client"):?>
+                    <h2>Mes comptes</h2>
+                    <?php else: ?>
+                        <h2>Toutes les comptes</h2> 
+                    <?php endif?>
+
                 <table class="table table-hover">
                     <thead class="table-info">
                         <tr>
