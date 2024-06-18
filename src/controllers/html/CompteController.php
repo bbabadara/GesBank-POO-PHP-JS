@@ -1,6 +1,7 @@
 <?php
 require_once "../src/models/CompteModel.php";
 require_once "../src/core/Controller.php";
+
 class CompteController extends Controller
 {
     private CompteModel $compteModel;

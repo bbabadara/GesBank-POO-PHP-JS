@@ -1,4 +1,5 @@
 <?php
+#[\AllowDynamicProperties]
 abstract class  Model
 {
 
@@ -17,13 +18,14 @@ abstract class  Model
       return $this->executeSelect($sql,true);
     }
 
-    protected function executeSelect(string $sql,bool $single=false):array{
+    protected function executeSelect(string $sql,bool $single=false):mixed{
         $calledClass=get_called_class();
         $result = $this->openConnexion()->query($sql);
+        $result->setFetchMode(PDO::FETCH_CLASS,$calledClass);
         if(!$single){
-            return $result->fetchAll(PDO::FETCH_CLASS,$calledClass);
+            return $result->fetchAll();
             }
-        return $result->fetch(PDO::FETCH_CLASS,$calledClass)?:[];
+        return $result->fetch();
     }
     protected function executeSelectPph(string $sql,bool $single=false):array{
         $result = $this->openConnexion()->query($sql);
