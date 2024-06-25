@@ -1,6 +1,9 @@
 <?php
 class Controller
 {
+    public function __construct(){
+        Session::open();
+    }
     protected $layout = "base";
     public function renderView(string $view, array $datas = [])
     {
@@ -26,10 +29,22 @@ class Controller
     public function redirectToRoot($url = "")
     {
         if ($url != "") {
-            header("location:".WEBROOT."/?$url");
+            header("location:" . WEBROOT . "/?$url");
             exit();
         }
-        header("location:".WEBROOT);
+        header("location:" . WEBROOT);
         exit();
     }
+
+    public function path(string $ressource,string $controller, string $action, array $additional = []): string
+    {
+        $link = WEBROOT . "/?ressource=$ressource&controller=$controller&action=$action";
+        if (!empty($additional)) {
+            foreach ($additional as $key => $value) {
+                $link = $link . "&" . "$key=$value";
+            }
+        }
+        return $link;
+    }
+
 }

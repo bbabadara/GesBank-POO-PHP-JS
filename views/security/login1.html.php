@@ -1,5 +1,8 @@
-<!-- Section: Design Block -->
-
+<?php
+if (!isset($errors)) {
+  $errors = [];
+}
+?>
 <div class="card mb-3 mt-5 shadow-lg ">
   <div class="row g-0 d-flex align-items-center ">
     <div class="col-lg-4 d-none d-lg-flex">
@@ -7,18 +10,23 @@
     </div>
     <div class="col-lg-8 ">
       <div class="card-body py-5 px-md-5">
-
+        <?php if (isset($errors["connect"])) : ?>
+          <div class="alert alert-info" role="alert">
+            <?=$errors["connect"]??""?>
+          </div>
+        <?php endif ?>
         <form action="<?php WEBROOT ?>" method="post">
           <div data-mdb-input-init class="form-outline mb-4">
             <label class="form-label" for="inputmail">Email </label>
-            <input type="email" id="inputmail" class="form-control tovalidate" name="email" />
-            <div class="error"></div>
+            <input type="text" id="inputmail" <?= isset($errors['email']) ? "is-invalid" : '' ?> class="form-control tovalidate" name="email" />
+            <div class="error"><?= $errors['email'] ?? '' ?></div>
+
           </div>
 
           <div data-mdb-input-init class="form-outline mb-4">
             <label class="form-label" for="inputpwd">Mot de passe</label>
-            <input type="password" id="inputpwd" class="form-control tovalidate" name="pwd" />
-            <div class="error"></div>
+            <input type="password" id="inputpwd" <?= isset($errors['pwd']) ? "is-invalid" : '' ?> class="form-control tovalidate" name="pwd" />
+            <div class="error"><?= $errors['pwd'] ?? '' ?></div>
           </div>
           <div class="form-check mb-2">
             <input type="checkbox" class="form-check-input" onkeypress="" id="affichepwd">
@@ -42,4 +50,4 @@
   </div>
 </div>
 
-<script src="<?= WEBROOT ?>/js/controllers/security.js" type="module"></script>
+<script src="<?= WEBROOT ?>/js/controllers/securityA.js" type="module"></script>

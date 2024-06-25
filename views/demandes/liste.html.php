@@ -1,12 +1,12 @@
 
             <div class="container w-100">
-            <?php if ($_SESSION["user"]["libp"]=="Client"):?>
+            <?php if (Autorisation::hasRole("Client")):?>
                     <h2>Mes demandes</h2>
                     <?php else: ?>
                         <h2>Toutes les demandes</h2>
                     <?php endif?>
                 <div class="container col-12 mt-3 border shadow d-flex align-items-center justify-content-around p-3 rounded">
-                <?php if ($_SESSION["user"]["libp"]=="CC"||$_SESSION["user"]["libp"]=="RG"):?>
+                <?php if ((Autorisation::hasRole("CC"))||(Autorisation::hasRole("RG"))):?>
                 <div class="col-md-3 d-flex align-items-center">
                         <label for="inputCity" class="form-label  mx-2">Tel</label>
                         <input type="text" class="form-control" id="inputTel">

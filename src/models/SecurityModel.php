@@ -6,6 +6,6 @@ class SecurityModel extends Model{
     {
        
         $sql = "select * from users u, profil p where p.idp=u.idp and u.email like '$mail' and u.pwd like '$pwd'";
-       return $this->executeSelectPph($sql,true);
+       return $this->executeSelect($sql,true);
     }
 }

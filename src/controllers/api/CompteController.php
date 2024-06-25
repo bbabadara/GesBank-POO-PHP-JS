@@ -16,7 +16,19 @@ class CompteController extends Controller
     }
     private function listerCompte()
     {
-        parent::renderJson($this->compteModel->findAllWithClient());
+        // parent::renderJson($this->compteModel->findAllWithClient());
+        if (isset($_REQUEST["action"])) {
+            if ($_REQUEST["action"] == "cClient" || $_SESSION["user"]["libp"] == "Client") {
+                $key = $_SESSION["user"]["libp"] == "Client" ? $_SESSION["user"]["idu"] : $_REQUEST["key"];
+                parent::renderJson($this->compteModel->findAllCompteByClient($key));
+            }
+        } else {
+            if ($_SESSION["user"]["libp"] == "Client") {
+                parent::renderJson($this->compteModel->findAllCompteByClient($_SESSION["user"]["idu"]));
+            } else {
+                parent::renderJson($this->compteModel->findAllWithClient());
+            }
+        }
        
     }
 }
